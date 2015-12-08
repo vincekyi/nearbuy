@@ -1,5 +1,14 @@
 module.exports = function(app, passport) {
 
+    var validator = require('../config/validator.js');
+
+    app.post('/lend', isLoggedIn, function(req,res){
+        validator.processAllFieldsOfTheForm(req,res);
+    });
+
+    app.get('/lend', isLoggedIn, function(req,res){
+        res.render('selling_form.ejs');
+    });
 // normal routes ===============================================================
 
     // show the home page (will also have our login links)
