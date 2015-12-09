@@ -5,10 +5,10 @@ var TwitterStrategy  = require('passport-twitter').Strategy;
 var GoogleStrategy   = require('passport-google-oauth').OAuth2Strategy;
 
 // load up the user model
-var User       = require('../app/models/user');
+var User       = require('../models/user');
 
 // load the auth variables
-var configAuth = require('./auth'); // use this one for testing
+var configAuth = require('../config/auth'); // use this one for testing
 
 module.exports = function(passport) {
 
@@ -80,6 +80,7 @@ module.exports = function(passport) {
 
         // asynchronous
         process.nextTick(function() {
+
             // if the user is not already logged in:
             if (!req.user) {
                 User.findOne({ 'local.email' :  email }, function(err, user) {
@@ -97,6 +98,8 @@ module.exports = function(passport) {
 
                         newUser.local.email    = email;
                         newUser.local.password = newUser.generateHash(password);
+                        newUser.local.firstName = req.body.firstname;
+                        newUser.local.lastName = req.body.lastname;
 
                         newUser.save(function(err) {
                             if (err)
