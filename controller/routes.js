@@ -3,7 +3,7 @@ module.exports = function(app, passport) {
     var validator = require('../controller/validator.js');
 
     app.post('/lend', isLoggedIn, function(req,res){
-        validator.processAllFieldsOfTheForm(req,res);
+        validator.processFormFieldsIndividual(req,res);
     });
 
     app.get('/lend', isLoggedIn, function(req,res){
