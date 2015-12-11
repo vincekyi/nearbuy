@@ -54,7 +54,7 @@ module.exports = {
                 // files[file.name] = file.type;
               }
               console.log("IMAGE VALID: " + valid);
-              
+
             });
         });
 

@@ -1,14 +1,13 @@
 <form action="/lend" method="post" enctype="multipart/form-data">
-  WHAT ARE YOU LENDING?
+  What Are You Lending?
   <br>
-  <input type="text" name="item_name">
+  <input type="text" name="item_name" maxlength="20" required="true" oninvalid="setCustomValidity('Please enter a name containing alphanumeric characters')" placeholder="Item Name" pattern="[A-Za-z0-9]" autofocus="true">
   <br>
   <input type="file" name="image_upload" id="input">
   <br>
-  DESCRIBE IT!
+  Describe It!
   <br>
-  <textarea name="item_description" rows="10" cols="30">
-  </textarea>
+  <textarea name="item_description" placeholder="Item Description" maxlength="160" rows="10" cols="30"></textarea>
   <br>
   <input type="submit" value="Submit">
   <br>
