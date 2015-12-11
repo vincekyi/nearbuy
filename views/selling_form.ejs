@@ -1,7 +1,7 @@
 <form action="/lend" method="post" enctype="multipart/form-data">
   What Are You Lending?
   <br>
-  <input type="text" name="item_name" maxlength="20" required="true" oninvalid="setCustomValidity('Please enter a name containing alphanumeric characters')" placeholder="Item Name" pattern="[A-Za-z0-9]" autofocus="true">
+  <input type="text" name="item_name" maxlength="20" required="true" oninvalid="setCustomValidity('Please enter a name containing alphanumeric characters')" placeholder="Item Name" pattern="^[a-zA-Z0-9]*$" autofocus="true">
   <br>
   <input type="file" name="image_upload" id="input">
   <br>
