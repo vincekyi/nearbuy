@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Near Buy</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <style>
+    body {
+      padding-top: 80px;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="page-header text-center">
+      <h1>
+        <span class="fa fa-anchor"></span>Home Page</h1>
+      <a href="/profile" class="btn btn-default btn-sm">Profile</a>
+      <a href="/lend" class="btn btn-default btn-sm">Lend</a>
+      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+    <% var startRow = false; %>
+    <% for(var i=0; i<pack.length; i++) {%>
+      <% if(i%2==0){%>
+        <% startRow = !startRow; %>
+      <% } %>
+      <% if(startRow && i%2==0){%>
+        <div class="row">
+      <% } %>
+            <div class="col-sm-4">
+              <div class="well">
+                <h3>
+                  <span class="fa fa-cube"></span>
+                  <%= pack[i].name%>
+                </h3>
+                <img src=<%=pack[i].imageDir.substring(6)%>  class="img-rounded img-responsive">
+                <strong>Description</strong>: <%=pack[i].description%> <br>
+                <strong>Post Date</strong>: <%=pack[i].postDate%> <br>
+              </div>
+            </div>
+
+      <% if(!startRow && i%2==0){%>
+        <% startRow = true; %>
+        </div>
+      <% } %>
+    <% } %>
+
+
+  </div>
+</body>
+
+</html>

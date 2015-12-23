@@ -6,6 +6,7 @@ var GoogleStrategy   = require('passport-google-oauth').OAuth2Strategy;
 
 // load up the user model
 var User       = require('../models/user');
+var Pack       = require('../models/pack');
 
 // load the auth variables
 var configAuth = require('../config/auth'); // use this one for testing
@@ -102,12 +103,19 @@ module.exports = function(passport) {
                         newUser.local.lastName = req.body.lastname;
                         newUser.local.gender = req.body.gender;
 
+                        // create new pack
+                        var newPack             = new Pack();
+                        newPack.user            = email;
 
                         newUser.save(function(err) {
                             if (err)
                                 return done(err);
 
-                            return done(null, newUser);
+                            newPack.save(function(err){
+                              if (err)
+                                  return done(err);
+                              return done(null, newUser);
+                            })
                         });
                     }
 
